@@ -13,17 +13,17 @@ checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRe
         }
         stage('build') {
             steps {
-              bat 'mvn clean install -f java-hello-world-with-maven-master/pom.xml'
+              bat 'mvn clean install -f basicpipelinepro/java-hello-world-with-maven-master/pom.xml'
             }
         }
         stage('codeQuality') {
             steps {
-               bat 'mvn sonar:sonar -f java-hello-world-with-maven-master/pom.xml'             
+               bat 'mvn sonar:sonar -f jbasicpipelinepro/java-hello-world-with-maven-master/pom.xml'             
             }
         }
         stage('deploy') {
             steps {
-deploy adapters: [tomcat9(credentialsId: 'tomcat_robot', path: '', url: 'http://localhost:7000/')], contextPath: 'java-hello-world-with-maven-master', war: '**/*.war'   }
+deploy adapters: [tomcat9(credentialsId: 'tomcat_robot', path: '', url: 'http://localhost:7000/')], contextPath: 'basicpipelinepro/java-hello-world-with-maven-master', war: '**/*.war'   }
     }
 }
 
