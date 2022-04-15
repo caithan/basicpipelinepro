@@ -23,6 +23,6 @@ checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRe
         }
         stage('deploy') {
             steps {
-deploy adapters: [tomcat9(credentialsId: 'tomcat_robot', path: '', url: 'http://localhost:7000/')], contextPath: 'basicpipelinepro/java-hello-world-with-maven-master', war: '**/*.war'        }
+deploy adapters: [tomcat9(credentialsId: 'tomcat_robot', path: '', url: 'http://localhost:7000/')], contextPath: 'java-hello-world-with-maven-master', war: '**/*.war'   }
     }
 }
