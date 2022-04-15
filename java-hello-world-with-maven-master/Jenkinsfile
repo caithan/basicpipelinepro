@@ -9,8 +9,7 @@ pipeline {
     stages {
         stage('Gitcheckout') {
             steps {
-             checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'mygit_cred', url: 'https://github.com/caithan/practical.git']]])
-            }
+checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'mygit_cred', url: 'https://github.com/caithan/basicpipelinepro.git']]])            }
         }
         stage('build') {
             steps {
@@ -24,8 +23,7 @@ pipeline {
         }
         stage('deploy') {
             steps {
-           deploy adapters: [tomcat9(credentialsId: 'tomcat_cred', path: '', url: 'http://localhost:7000/manager/html')], contextPath: '/maven-simple-master', war: '**/*.war'
-            }
+deploy adapters: [tomcat9(credentialsId: 'tomcat_robot', path: '', url: 'http://localhost:7000/')], contextPath: ' java-hello-world-with-maven-master', war: '**/*.war'            }
         }
     }
 }
